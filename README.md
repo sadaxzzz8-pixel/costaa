@@ -1,71 +1,65 @@
 # Costa Barbershop 💈
+**Next.js · Three.js · GSAP · Framer Motion · Lenis · Tailwind**
 
-Site premium da Costa Barbershop — Paracuru, Ceará, Brasil.
+> Barbearia premium de Paracuru, Ceará, Brasil.
 
-## Stack
-- **Next.js 16** (App Router)
-- **Three.js + React Three Fiber** (cenas 3D)
-- **GSAP** (animações avançadas)
-- **Lenis** (smooth scroll)
-- **Framer Motion** (microinterações)
-- **Tailwind CSS** (estilização)
+## 🚀 Deploy rápido no Vercel
 
-## Rodar localmente
+1. Suba para o GitHub
+2. [vercel.com](https://vercel.com) → New Project → conecta o repositório
+3. *(Opcional)* Em **Environment Variables** adicione:
+   ```
+   GEMINI_API_KEY=AIzaSy_sua_chave
+   ```
+4. Deploy! ✅
+
+## 💻 Rodar localmente
 
 ```bash
 npm install
-npm run dev
+npm run dev       # http://localhost:3000
 ```
 
-Acesse: http://localhost:3000
+## 🔑 Painel Admin
 
-## Deploy no Vercel
+Acesse: `http://localhost:3000/admin`  
+Senha padrão: `costa2024`
 
-1. Suba para o GitHub
-2. Conecte o repositório no [vercel.com](https://vercel.com)
-3. Deploy automático!
+No painel você pode:
+- Ver e gerenciar agendamentos em tempo real
+- Confirmar, concluir ou cancelar agendamentos
+- Editar informações do site (telefone, endereço, etc.)
+- Configurar a chave do Gemini AI para o chat
 
-## Variáveis de ambiente (opcional)
+## 🤖 Chat IA (Gemini)
 
-Crie `.env.local` na raiz:
+1. Acesse `http://localhost:3000/admin` → aba **Chat IA**
+2. Cole sua API Key do Gemini (`AIzaSy...`)
+3. Ou defina `GEMINI_API_KEY` no `.env.local` / Vercel
 
-```env
-GEMINI_API_KEY=AIzaSy...
+> Obtenha a chave em: https://aistudio.google.com/app/apikey
+
+## 📁 Estrutura
+
 ```
+app/
+├── page.tsx              ← Site principal
+├── admin/page.tsx        ← Painel Admin completo
+├── globals.css           ← Estilos globais (glassmorphism, glow, etc.)
+└── api/
+    ├── appointments/     ← CRUD de agendamentos
+    ├── available-slots/  ← Horários disponíveis
+    ├── chat/             ← Proxy Gemini AI
+    ├── settings/         ← Configurações do site
+    └── admin/gemini-key/ ← Salvar key do Gemini
 
-## Painel Admin
+components/
+├── HeroCanvas.tsx        ← Cena 3D (Three.js + R3F)
+├── HeroSection.tsx       ← Hero com GSAP
+├── Navbar.tsx            ← Navbar com Framer Motion
+├── SmoothScroll.tsx      ← Lenis smooth scroll
+├── CursorGlow.tsx        ← Cursor com glow dourado
+└── ...demais seções
 
-Acesse `/admin` para gerenciar agendamentos.
-
-## Estrutura
-
-```
-costa-next/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   ├── globals.css
-│   └── api/
-│       ├── appointments/
-│       ├── available-slots/
-│       ├── chat/
-│       └── settings/
-├── components/
-│   ├── SmoothScroll.tsx
-│   ├── CursorGlow.tsx
-│   ├── Navbar.tsx
-│   ├── HeroCanvas.tsx    ← Three.js 3D
-│   ├── HeroSection.tsx
-│   ├── MarqueeBar.tsx
-│   ├── ServicesSection.tsx
-│   ├── BarbersSection.tsx
-│   ├── BookingSection.tsx
-│   ├── LoyaltySection.tsx
-│   ├── TestimonialsSection.tsx
-│   ├── AboutSection.tsx
-│   ├── Footer.tsx
-│   ├── ChatWidget.tsx
-│   └── WhatsAppButton.tsx
-└── lib/
-    └── db.ts
+lib/db.ts                 ← In-memory store
 ```
